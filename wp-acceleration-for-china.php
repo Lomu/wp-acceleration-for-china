@@ -1,7 +1,7 @@
 <?php
 /*
   Plugin Name: WP Acceleration for China
-  Plugin URI: http://lomu.me/
+  Plugin URI: http://lomu.me/post/wp-acceleration-for-china
   Description: 替换Google CDN文件、Gravatar头像链接，加快WordPress打开速度，为WordPress中国用户提供加速
   Author: Lomu
   Author URI: http://lomu.me/
