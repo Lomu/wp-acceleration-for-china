@@ -23,18 +23,18 @@ function izt_replace_callback($matches) {
   $replacements = array();
 
   // 匹配谷歌CDN链接
-  $patterns[0] = '/\.googleapis\.com/';
+  // $patterns[0] = '/\.googleapis\.com/';
 
   // 匹配头像链接
-  $patterns[1] = '/http:\/\/[0-9]\.gravatar\.com\//';
-  $patterns[2] = '/http%3A%2F%2F[0-9]\.gravatar\.com%2F/';
+  $patterns[0] = '/http:\/\/[0-9]\.gravatar\.com\//';
+  $patterns[1] = '/http%3A%2F%2F[0-9]\.gravatar\.com%2F/';
 
   // 使用中科大CDN地址
-  $replacements[0] = '.lug.ustc.edu.cn';
+  // $replacements[0] = '.lug.ustc.edu.cn';
 
   // 目前使用https可以访问到头像图片
-  $replacements[1] = 'https://secure.gravatar.com/';
-  $replacements[2] = 'https%3A%2F%2Fsecure.gravatar.com%2F';
+  $replacements[0] = 'https://secure.gravatar.com/';
+  $replacements[1] = 'https%3A%2F%2Fsecure.gravatar.com%2F';
 
   return preg_replace($patterns, $replacements, $str);
 }
