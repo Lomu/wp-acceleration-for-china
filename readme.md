@@ -7,7 +7,7 @@ WP Acceleration for China
 
 **目前插件可以为常见的两种打开慢的情况进行提速：**
 
-1. Google CDN国内无法访问；
+1. Google CDN国内无法访问；（已经可以访问了，已经去除替换）
 2. Gravatar头像国内无法访问。
 
 **加速原理：**
