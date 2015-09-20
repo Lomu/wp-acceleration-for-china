@@ -7,7 +7,7 @@ WP Acceleration for China
 
 **目前插件可以为常见的两种打开慢的情况进行提速：**
 
-1. Google CDN国内无法访问；（可以访问了，已经去除替换）
+1. Google CDN国内无法访问；
 2. Gravatar头像国内无法访问。
 
 **加速原理：**
@@ -20,3 +20,8 @@ WP Acceleration for China
 1. 将`wp-acceleration-for-china.php`里面的代码加入主题`functions.php`内；
 2. 将`wp-acceleration-for-china.php`文件上传到主题目录，在`functions.php`文件里使用`include 'wp-acceleration-for-china.php';`引入；
 3. 以插件的形式直接安装，在后台搜索插件名称，或者到<a target="_blank" href="https://wordpress.org/plugins/wp-acceleration-for-china/">https://wordpress.org/plugins/wp-acceleration-for-china/</a>下载插件。
+
+**更新日志**
+V1.2.0
+1. 新增后台设置：设置->WP加速；
+2. 可选择加速CDN镜像。
