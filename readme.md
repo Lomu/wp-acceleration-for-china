@@ -22,6 +22,8 @@ WP Acceleration for China
 3. 以插件的形式直接安装，在后台搜索插件名称，或者到<a target="_blank" href="https://wordpress.org/plugins/wp-acceleration-for-china/">https://wordpress.org/plugins/wp-acceleration-for-china/</a>下载插件。
 
 **更新日志**
+
 V1.2.0
+
 1. 新增后台设置：设置->WP加速；
 2. 可选择加速CDN镜像。
