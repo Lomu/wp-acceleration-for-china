@@ -22,8 +22,8 @@ function izt_replace_callback($matches) {
   $google = !$google?1:$google;
   $gravatar = !$gravatar?1:$gravatar;
 
-  $google_array = ['.lug.ustc.edu.cn', '.useso.com'];
-  $gravatar_array = ['https://secure.gravatar.com/avatar', 'http://cn.gravatar.com/avatar', 'http://cdn.v2ex.com/gravatar'];
+  $google_array = array('.lug.ustc.edu.cn', '.useso.com');
+  $gravatar_array = array('https://secure.gravatar.com/avatar', 'http://cn.gravatar.com/avatar', 'http://cdn.v2ex.com/gravatar');
 
   $str = $matches[0];
 
