@@ -5,7 +5,7 @@
   Description: 替换Gravatar头像链接，加快WordPress打开速度，为WordPress中国用户提供加速
   Author: Lomu
   Author URI: http://lomu.me/
-  Version: 1.2.0
+  Version: 1.3.0
 */
 
 // 匹配出css、js、图片地址
@@ -22,8 +22,8 @@ function izt_replace_callback($matches) {
   $google = !$google?1:$google;
   $gravatar = !$gravatar?1:$gravatar;
 
-  $google_array = array('.lug.ustc.edu.cn', '.useso.com');
-  $gravatar_array = array('https://secure.gravatar.com/avatar', 'http://cn.gravatar.com/avatar', 'http://cdn.v2ex.com/gravatar');
+  $google_array = array('.geekzu.org', '.lug.ustc.edu.cn', '.useso.com');
+  $gravatar_array = array('http://fdn.geekzu.org/avatar', 'http://cn.gravatar.com/avatar', 'http://cdn.v2ex.com/gravatar');
 
   $str = $matches[0];
 
@@ -97,8 +97,9 @@ function izt_wafc_fun(){
           <td>
             <select name="wafc_google">
               <option value="-1">不加速</option>
-              <option value="1"<?=$google==1?' selected="selected"':''?>>中科大CDN</option>
-              <option value="2"<?=$google==2?' selected="selected"':''?>>360 useso</option>
+              <option value="1"<?=$google==1?' selected="selected"':''?>>极客族</option>
+              <option value="2"<?=$google==2?' selected="selected"':''?>>中科大CDN</option>
+              <option value="3"<?=$google==3?' selected="selected"':''?>>360 useso</option>
             </select>
           </td>
         </tr>
@@ -107,7 +108,7 @@ function izt_wafc_fun(){
           <td>
             <select name="wafc_gravatar">
               <option value="-1">不加速</option>
-              <option value="1"<?=$gravatar==1?' selected="selected"':''?>>https访问</option>
+              <option value="1"<?=$gravatar==1?' selected="selected"':''?>>极客族</option>
               <option value="2"<?=$gravatar==2?' selected="selected"':''?>>CN子域名</option>
               <option value="3"<?=$gravatar==3?' selected="selected"':''?>>v2ex</option>
             </select>
