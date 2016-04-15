@@ -2,65 +2,62 @@
 /*
   Plugin Name: WP Acceleration for China
   Plugin URI: http://lomu.me/post/wp-acceleration-for-china
-  Description: 替换Gravatar头像链接，加快WordPress打开速度，为WordPress中国用户提供加速
+  Description: 替换Google CDN文件、Gravatar头像链接，加快WordPress打开速度，为WordPress中国用户提供加速。
   Author: Lomu
   Author URI: http://lomu.me/
-  Version: 1.4.0
+  Version: 1.5.0
 */
-
+  
 // 匹配出css、js、图片地址
 function izt_replace_url($str){
     $regexp = "/<(link|script|img)([^<>]+)>/i";
     $str = preg_replace_callback( $regexp, "izt_replace_callback", $str );
     return $str;
 }
-
 // 匹配需要替换掉的链接地址
 function izt_replace_callback($matches) {
   $google = get_option("wafc_google");
   $gravatar = get_option("wafc_gravatar");
   $google = !$google?1:$google;
   $gravatar = !$gravatar?1:$gravatar;
-
   $google_array = array('.lug.ustc.edu.cn', '.useso.com', '.geekzu.org');
-  $gravatar_array = array('https://secure.gravatar.com/avatar', 'http://cn.gravatar.com/avatar', 'http://cdn.v2ex.com/gravatar', 'http://fdn.geekzu.org/avatar');
-
+  $gravatar_array = array('https://secure.gravatar.com/avatar', '//cn.gravatar.com/avatar', '//cdn.v2ex.com/gravatar', '//fdn.geekzu.org/avatar');
   $str = $matches[0];
-
   $patterns = array();
   $replacements = array();
-
   if($google>0){
     // 匹配谷歌CDN链接
     $patterns[0] = '/\.googleapis\.com/';
-
     // 使用CDN地址替换
     $replacements[0] = $google_array[$google-1];
-  }
 
+    if($google=='2'){
+      $patterns[2] = '/(http|https):\/\/fonts\./';
+      $replacements[2] = '//fonts.';
+      $patterns[3] = '/(http|https):\/\/ajax\./';
+      $replacements[3] = '//ajax.';
+    }
+  }
   if($gravatar>0){
     // 匹配头像链接
-    $patterns[1] = '/http:\/\/[0-9]\.gravatar\.com\/avatar/';
-    // $patterns[2] = '/http%3A%2F%2F[0-9]\.gravatar\.com%2F/';
-
+    if($gravatar=='1'){
+      $patterns[1] = '/(http|https):\/\/[0-9]\.gravatar\.com\/avatar/';
+    }else{
+      $patterns[1] = '/\/\/[0-9]\.gravatar\.com\/avatar/';
+    }
     // 使用可以访问到头像图片替换
     $replacements[1] = $gravatar_array[$gravatar-1];
-    // $replacements[2] = 'https%3A%2F%2Fsecure.gravatar.com%2F';
   }
-
   return preg_replace($patterns, $replacements, $str);
 }
-
 function izt_replace_start() {
    //开启缓冲
   ob_start("izt_replace_url");
 }
-
 function izt_replace_end() {
   // 关闭缓冲
   if(ob_get_level() > 0) ob_end_flush();
 }
-
 /**
  * 分别将开启和关闭缓冲添加到wp_loaded和shutdown动作
  * 也可以尝试添加到其他动作，只要内容输出在两个动作之间即可
@@ -68,16 +65,11 @@ function izt_replace_end() {
  */
 add_action('wp_loaded', 'izt_replace_start');
 add_action('shutdown', 'izt_replace_end');
-
-
 add_action('admin_menu', 'izt_wafc_menu');
-
 function izt_wafc_menu(){
   add_submenu_page( 'options-general.php', 'WP Acceleration for China设置', 'WP加速', 'manage_options', 'izt-wafc', 'izt_wafc_fun' );
 }
-
 function izt_wafc_fun(){
-
   if (isset($_POST["action"]) && $_POST["action"] == "saveconfiguration") {
     update_option('wafc_google', $_POST["wafc_google"]);
     update_option('wafc_gravatar', $_POST["wafc_gravatar"]);
