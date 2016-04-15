@@ -22,15 +22,17 @@ WP Acceleration for China
 3. 以插件的形式直接安装，在后台搜索插件名称，或者到<a target="_blank" href="https://wordpress.org/plugins/wp-acceleration-for-china/">https://wordpress.org/plugins/wp-acceleration-for-china/</a>下载插件。
 
 **更新日志**
+V1.5.0
+
+https优化
 
 V1.4.0
 
-1. 新增极客族CDN节点
+新增极客族CDN节点
 
 V1.3.0
 
-1. 修复php5.2、PHP5.3不兼容问题
-
+修复php5.2、PHP5.3不兼容问题
 
 V1.2.0
 
